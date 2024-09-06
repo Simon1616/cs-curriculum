@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     float xdirection;
     float xvector;
 
+    float yspeed;
+    float ydirection;
+    float yvector;
+
     Rigidbody2D rb;
 
     private void Start()
@@ -18,9 +22,13 @@ public class PlayerController : MonoBehaviour
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
 
-        xspeed = 4;
+        xspeed = 5;
         xdirection = 0;
         xvector = 0;
+
+        yspeed = 5;
+        ydirection = 0;
+        yvector = 0;
         
         if (overworld)
         {
@@ -35,9 +43,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         xdirection = Input.GetAxis("Horizontal");
-        xvector = xdirection * xspeed;
+        xvector = xdirection * xspeed * Time.deltaTime;
 
-        transform.Translate(xvector * Time.deltaTime, 0, 0);
+        ydirection = Input.GetAxis("Vertical");
+        yvector = ydirection * yspeed * Time.deltaTime;
+
+        transform.Translate(xvector, yvector, 0);
+
+        
     }
     
     //for organization, put other built-in Unity functions here
