@@ -3,6 +3,7 @@ using UnityEngine;
 public class Money : MonoBehaviour
 {
     GameManager gm;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +20,6 @@ public class Money : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
-            //coins++
             gm.score += 1;
             Destroy(other.gameObject);
             Debug.Log("Score: " + gm.score);
