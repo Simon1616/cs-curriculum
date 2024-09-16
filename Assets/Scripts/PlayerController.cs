@@ -56,19 +56,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private int score = 0;
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            //coins++
-            score += 1;
-            Destroy(other.gameObject);
-            Debug.Log("Score: " + score);
-        }
-    }
-
     //for organization, put other built-in Unity functions here
 
 
