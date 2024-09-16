@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         yspeed = 5;
         ydirection = 0;
         yvector = 0;
-        
+
         if (overworld)
         {
             GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -45,19 +45,35 @@ public class PlayerController : MonoBehaviour
         xdirection = Input.GetAxis("Horizontal");
         xvector = xdirection * xspeed * Time.deltaTime;
 
-        ydirection = Input.GetAxis("Vertical");
-        yvector = ydirection * yspeed * Time.deltaTime;
+        if (overworld)
+        {
+            ydirection = Input.GetAxis("Vertical");
+            yvector = ydirection * yspeed * Time.deltaTime;
+        }
 
         transform.Translate(xvector, yvector, 0);
 
-        
+
     }
-    
+
+    private int score = 0;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            //coins++
+            score += 1;
+            Destroy(other.gameObject);
+            Debug.Log("Score: " + score);
+        }
+    }
+
     //for organization, put other built-in Unity functions here
-    
-    
-    
-    
-    
+
+
+
+
+
     //after all Unity functions, your own functions can go here
 }
