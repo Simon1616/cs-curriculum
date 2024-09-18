@@ -2725,6 +2725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  Health: 0
 --- !u!4 &709341032
 Transform:
   m_ObjectHideFlags: 0
