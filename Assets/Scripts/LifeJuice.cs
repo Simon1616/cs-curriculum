@@ -25,17 +25,22 @@ public class LifeJuice : MonoBehaviour
 
             if (gm.Health <= 0)
             {
+                gm.Health = 100;
+
                 gm.score -= 5;
+
+                print("The Clerics of the Land tm thank you for using our services!");
+
+                Debug.Log("Score:" + gm.score);
 
                 if (gm.score < 0)
                 {
-                    gm.score = 0;
+                    print("Haha You're in debt! >:D");
                 } 
             }
             
-            Debug.Log("Health + gm.Health");
-            Debug.Log("Score" + gm.score);
-            
+            Debug.Log("Health:" + gm.Health);
+
         }
     }
 }

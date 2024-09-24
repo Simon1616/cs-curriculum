@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Health = 100;
-        Debug.Log("Health" + Health);
+        Debug.Log("Health:" + Health);
     }
 
     // Update is called once per frame
