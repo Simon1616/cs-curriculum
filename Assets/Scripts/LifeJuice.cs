@@ -22,27 +22,9 @@ public class LifeJuice : MonoBehaviour
         if (other.gameObject.CompareTag("Spikes"))
         {
             gm.Health -= 10;
-
-            if (gm.Health <= 0)
-            {
-                gm.Health = 100;
-
-                gm.score -= 5;
-                gm.coinText.text = "Score: " + gm.score;
-
-                print("The Clerics of the Land tm thank you for using our services!");
-
-                Debug.Log("Score:" + gm.score);
-
-                if (gm.score < 0)
-                {
-                    print("Haha You're in debt! >:D");
-                } 
-            }
             
             Debug.Log("Health:" + gm.Health);
             gm.healthText.text = "Health: " + gm.Health;
-
         }
     }
 }

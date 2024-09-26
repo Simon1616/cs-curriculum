@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
+
+    private Scene current;
+
+    public Scene Current;
+    
 
     public void Awake()
     {
@@ -28,6 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         Health = 100;
         Debug.Log("Health:" + Health);
 
@@ -38,6 +45,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void Die()
+    {
+        score = 0;
+        
+        
         
     }
 }

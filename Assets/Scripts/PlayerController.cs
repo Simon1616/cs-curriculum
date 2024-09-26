@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,10 +18,13 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    GameManager gm;
+
     private void Start()
     {
-        GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
-        GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
+        gm = FindObjectOfType<GameManager>();
+
+        gm.Current = SceneManager.();
 
         xspeed = 5;
         xdirection = 0;
