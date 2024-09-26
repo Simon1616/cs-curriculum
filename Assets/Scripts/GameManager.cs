@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class GameManager : MonoBehaviour
     public int Health;
 
     public static GameManager gm;
+
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI healthText;
 
     public void Awake()
     {
@@ -26,6 +30,9 @@ public class GameManager : MonoBehaviour
     {
         Health = 100;
         Debug.Log("Health:" + Health);
+
+        coinText.text = "Score: " + score;
+        healthText.text = "Health: " + Health;
     }
 
     // Update is called once per frame

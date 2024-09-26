@@ -28,6 +28,7 @@ public class LifeJuice : MonoBehaviour
                 gm.Health = 100;
 
                 gm.score -= 5;
+                gm.coinText.text = "Score: " + gm.score;
 
                 print("The Clerics of the Land tm thank you for using our services!");
 
@@ -40,6 +41,7 @@ public class LifeJuice : MonoBehaviour
             }
             
             Debug.Log("Health:" + gm.Health);
+            gm.healthText.text = "Health: " + gm.Health;
 
         }
     }
