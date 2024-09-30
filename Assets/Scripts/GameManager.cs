@@ -45,14 +45,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Die();
     }
 
     void Die()
     {
-        score = 0;
-        
-        
-        
+        if (Health <= 0)
+        {
+            SceneManager.LoadScene("Start");
+            score = 0;
+            Health = 100;
+        }
     }
 }

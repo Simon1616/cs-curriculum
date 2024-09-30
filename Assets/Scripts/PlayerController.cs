@@ -15,16 +15,13 @@ public class PlayerController : MonoBehaviour
     float yspeed;
     float ydirection;
     float yvector;
+    
+    
 
     Rigidbody2D rb;
 
-    GameManager gm;
-
     private void Start()
     {
-        gm = FindObjectOfType<GameManager>();
-
-        gm.Current = SceneManager.();
 
         xspeed = 5;
         xdirection = 0;
