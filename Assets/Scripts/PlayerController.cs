@@ -15,19 +15,19 @@ public class PlayerController : MonoBehaviour
     float yspeed;
     float ydirection;
     float yvector;
-    
-    
+
+    private Vector3 movement;
 
     Rigidbody2D rb;
 
     private void Start()
     {
 
-        xspeed = 5;
+        xspeed = 5f;
         xdirection = 0;
         xvector = 0;
 
-        yspeed = 5;
+        yspeed = 5f;
         ydirection = 0;
         yvector = 0;
 
@@ -44,15 +44,21 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         xdirection = Input.GetAxis("Horizontal");
-        xvector = xdirection * xspeed * Time.deltaTime;
+        xvector = xdirection * xspeed;
 
         if (overworld)
         {
             ydirection = Input.GetAxis("Vertical");
-            yvector = ydirection * yspeed * Time.deltaTime;
+            yvector = ydirection * yspeed;
         }
 
-        transform.Translate(xvector, yvector, 0);
+        movement = new Vector3(xvector, yvector, 0);
+        if (movement.magnitude > 1);
+        {
+            movement = movement.normalized;
+        }
+
+        transform.Translate(movement * Time.deltaTime);
 
 
     }
