@@ -24,6 +24,18 @@ public class Money : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Score: " + gm.score);
             gm.coinText.text = "Score: " + gm.score;
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
