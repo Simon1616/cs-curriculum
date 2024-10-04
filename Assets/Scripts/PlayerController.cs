@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
             yvector = ydirection * yspeed;
         }
 
-        movement = new Vector3(xvector, yvector, 0);
+        movement = new Vector3(xdirection, ydirection, 0);
         if (movement.magnitude > 1);
         {
-            movement = movement.normalized;
+            movement = movement.normalized * xspeed;
         }
 
         transform.Translate(movement * Time.deltaTime);
