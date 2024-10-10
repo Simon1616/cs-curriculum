@@ -1,30 +1,31 @@
+using System;
 using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
     public Vector3 target;
-    public Vector3 direction;
-    public int speed = 10;
-    public float lifespan = 120;
-    Turret Pos;
-    
+    public PlayerController playerController = null;
+    private int speed = 8;
+    private Vector3 current;
+    private float lifespan = 10;
+    private Vector3 direction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Pos = FindObjectOfType<Turret>();
-        target = Pos.targetPos;
-        direction = new Vector3(transform.position.x - target.x, transform.position.y - target.y, 0).normalized;
+        playerController = FindFirstObjectByType<PlayerController>();
+        target = new Vector3(playerController.playerX, playerController.playerY, 0);
+        direction = ((target - transform.position).normalized) * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position += (direction * Time.deltaTime);
         lifespan -= Time.deltaTime;
-        if (lifespan <= 0)
+        if (lifespan < 0)
         {
             Destroy(gameObject);
         }
-        direction = direction * speed;
-        transform.Translate(direction * Time.deltaTime);
     }
 }

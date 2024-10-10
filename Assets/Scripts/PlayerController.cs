@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     public bool overworld;
 
+    public float playerX;
+    public float playerY;
+
     float xspeed;
     float xdirection;
     float xvector;
@@ -60,7 +63,8 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movement * Time.deltaTime);
 
-
+        playerX = transform.position.x;
+        playerY = transform.position.y;
     }
 
     //for organization, put other built-in Unity functions here

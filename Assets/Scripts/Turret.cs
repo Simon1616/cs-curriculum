@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,9 +7,9 @@ public class Turret : MonoBehaviour
 {
     private float firerate;
     private float cooldown;
-    public Vector3 targetPos;
+    private GameObject player = null;
 
-    public GameObject projectilePrefab;
+    public GameObject projectileClone;
     
     public Vector3 spawnPos;
     
@@ -27,14 +28,25 @@ public class Turret : MonoBehaviour
         cooldown -= Time.deltaTime;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && cooldown <= 0)
         {
-            Debug.Log("shouldshoot");
-            Instantiate(projectilePrefab, spawnPos, quaternion.identity);
-            targetPos = other.gameObject.transform.position;
+            player = other.gameObject;
+            PlayerController pc = player.GetComponent<PlayerController>();
+            Instantiate(projectileClone, spawnPos, quaternion.identity);
+            ProjectileScript cloneScript = projectileClone.GetComponent<ProjectileScript>();
+            cloneScript.playerController = pc;
             cooldown = firerate;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player = null;
+        }
+
     }
 }
