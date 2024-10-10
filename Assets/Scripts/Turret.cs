@@ -1,4 +1,5 @@
 using System;
+using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private float firerate;
-    private float cooldown;
+    private double cooldown;
     private GameObject player = null;
 
     public GameObject projectileClone;
@@ -16,23 +17,19 @@ public class Turret : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        firerate = 2;
-        cooldown = 1;
+        firerate = 1;
+        cooldown = 0.5;
         
-        spawnPos = new Vector3(transform.position.x, transform.position.y, 0);
+        spawnPos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
         cooldown -= Time.deltaTime;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player") && cooldown <= 0)
+        
+        if (cooldown <= 0 && player != null)
         {
-            player = other.gameObject;
             PlayerController pc = player.GetComponent<PlayerController>();
             Instantiate(projectileClone, spawnPos, quaternion.identity);
             ProjectileScript cloneScript = projectileClone.GetComponent<ProjectileScript>();
@@ -41,7 +38,12 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        player = other.gameObject;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

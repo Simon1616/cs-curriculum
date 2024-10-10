@@ -7,7 +7,7 @@ public class ProjectileScript : MonoBehaviour
     public PlayerController playerController = null;
     private int speed = 8;
     private Vector3 current;
-    private float lifespan = 10;
+    private double lifespan = 1.5;
     private Vector3 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,3 +29,5 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 }
+
+

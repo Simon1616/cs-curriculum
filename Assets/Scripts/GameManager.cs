@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Start");
             score = 0;
             Health = 100;
+            coinText.text = "Score: " + score;
+            healthText.text = "Health: " + Health;
         }
     }
 }

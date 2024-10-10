@@ -3071,6 +3071,8 @@ MonoBehaviour:
   Health: 0
   coinText: {fileID: 933277186}
   healthText: {fileID: 505082513}
+  Current:
+    m_Handle: 0
 --- !u!114 &1546319448
 MonoBehaviour:
   m_ObjectHideFlags: 0
