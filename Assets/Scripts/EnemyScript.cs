@@ -80,7 +80,7 @@ public class EnemyScript : MonoBehaviour
             else if (state == states.chasing)
             {
                 state = states.patrolling;
-                player = null;
+                player = null;  
             }
         }
     }
