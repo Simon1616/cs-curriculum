@@ -8,11 +8,13 @@ public class TopDown_EnemyAnimator : MonoBehaviour
 
     Vector3 prevPos;
     Animator anim;
+    private EnemyScript enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        enemy = FindFirstObjectByType<EnemyScript>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class TopDown_EnemyAnimator : MonoBehaviour
 
         prevPos = transform.position;
 
-        if (Input.GetMouseButton(0))
+        if (enemy.state == 3)
         {
             Attack();
         }

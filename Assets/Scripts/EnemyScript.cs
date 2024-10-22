@@ -1,107 +1,81 @@
-using System;
-using System.IO;
-using Unity.VisualScripting;
-using UnityEditor.VersionControl;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class EnemyScript : MonoBehaviour
 {
-    enum states
-    {
-        patrolling,
-        chasing,
-        attacking,
-        die
-    }
-    
-
-    private states state;
-    
-    float speed = 2;
-    private float duration = 5;
-    
-    private Vector3 target;
-    
-    private GameObject player = null;
-
-    public PlayerController playerController;
-
+    private Vector3 etarget;
+    private Vector3 current;
     private Vector3 direction;
+    private GameManager gameManager;
+    private PlayerController playerController;
+    private float distance;
+    public float state;
+    private float changetime;
+    private float iframes;
 
-    private void Start()
+
+    void Start()
     {
-        state = states.patrolling;
+        iframes = 750;
         playerController = FindFirstObjectByType<PlayerController>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        changetime = 0;
+        etarget = new Vector3(playerController.playerX, playerController.playerY, 0);
+        state = 1;
     }
 
-    private void Update()
+    void Update()
     {
-        if (state == states.chasing)
+        distance = Vector3.Distance(gameObject.transform.position, etarget);
+        if (distance < 4.5)
         {
-            Chase();
+            if (distance < 1.25)
+                state = 3;
+            else
+                state = 2;
         }
-        else if (state == states.attacking)
-        {
-            Attack();
-        }
-        else if (state == states.patrolling)
-        {
-            Patrol();
-        }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        else
         {
-            if (player == null)
+            state = 1;
+        }
+
+        etarget = new Vector3(playerController.playerX, playerController.playerY, 0);
+
+        if (state == 2) //CHASE
+        {
+            iframes -= 1;
+            direction = ((etarget - transform.position).normalized);
+            transform.Translate(direction * Time.deltaTime * 1.5f);
+        }
+
+        if (state == 3) //ATTACK
+        {
+            iframes -= 1;
+            if (iframes < 1)
             {
-                state = states.chasing;
+                iframes = 900;
+                gameManager.Health -= 10;
+                
+                Debug.Log("Health:" + gameManager.Health);
+                gameManager.healthText.text = "Health: " + gameManager.Health;
             }
-
-            if (player != null)
-            {
-                state = states.attacking;
-            }
-            player = other.gameObject;
-            
+            direction = ((etarget - transform.position).normalized);
+            transform.Translate(direction * Time.deltaTime * 0.5f);
         }
-        
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        current = transform.position;
+
+        if (state == 1) //PATROL
         {
-            if (state == states.attacking)
+            changetime -= Time.deltaTime;
+            if (changetime < 1)
             {
-                state = states.chasing;
-            }
-            else if (state == states.chasing)
-            {
-                state = states.patrolling;
-                player = null;  
+                changetime = Random.Range(1, 5);
+                direction = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
             }
         }
-    }
-
-    void Chase()
-    {
-        target = new Vector3(playerController.playerX, playerController.playerY, 0);
-        direction = ((target - transform.position).normalized) * speed;
-        transform.position += (direction * Time.deltaTime);
-    }
-
-    void Attack()
-    {
-        Debug.Log("attacked");
-    }
-
-    void Patrol()
-    {
-        while (true)
-        {
-            
-        }
+        transform.Translate(direction * Time.deltaTime * 0.01f);
     }
 }
