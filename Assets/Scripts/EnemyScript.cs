@@ -73,9 +73,9 @@ public class EnemyScript : MonoBehaviour
             if (changetime < 1)
             {
                 changetime = Random.Range(1, 5);
-                direction = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
+                direction = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0).normalized;
             }
         }
-        transform.Translate(direction * Time.deltaTime * 0.01f);
+        transform.Translate(direction * Time.deltaTime);
     }
 }
