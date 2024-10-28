@@ -1,4 +1,3 @@
-using System.Numerics;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -13,6 +12,8 @@ public class EnemyScript : MonoBehaviour
     public float state;
     private float changetime;
     private float iframes;
+    public Vector3 spawnPos;
+    public GameObject AxeItem;
 
 
     void Start()
@@ -23,6 +24,7 @@ public class EnemyScript : MonoBehaviour
         changetime = 0;
         etarget = new Vector3(playerController.playerX, playerController.playerY, 0);
         state = 1;
+        spawnPos = new Vector3(transform.position.x, transform.position.y + 0.5f, 0);
     }
 
     void Update()
@@ -53,6 +55,12 @@ public class EnemyScript : MonoBehaviour
         if (state == 3) //ATTACK
         {
             iframes -= 1;
+            if (playerController.smack == true)
+            {
+                iframes = 1;
+                Instantiate(AxeItem, spawnPos, Quaternion.identity);
+                Destroy(gameObject);
+            }
             if (iframes < 1)
             {
                 iframes = 900;

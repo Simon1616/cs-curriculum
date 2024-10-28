@@ -28,8 +28,17 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     }
 
+    public PlayerController playerController;
+    
     private void Update()
     {
+        playerController = FindFirstObjectByType<PlayerController>();
+        
+        if (playerController.hasAxe)
+        {
+            SwitchToAxe();
+        }
+        
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)

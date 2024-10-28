@@ -23,8 +23,14 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public bool smack = false;
+    public bool hasAxe = false;
+
+    private GameManager gm;
+
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
 
         xspeed = 5f;
         xdirection = 0;
@@ -65,6 +71,25 @@ public class PlayerController : MonoBehaviour
 
         playerX = transform.position.x;
         playerY = transform.position.y;
+
+        if (Input.GetMouseButton(0))
+        {
+            smack = true;
+        }
+        else
+        {
+            smack = false;
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            hasAxe = true;
+            Destroy(other.gameObject);
+            Debug.Log("Axe Acquired");
+        }
     }
 
     //for organization, put other built-in Unity functions here
