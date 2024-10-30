@@ -34,7 +34,7 @@ public class TopDown_AnimatorController : MonoBehaviour
     {
         playerController = FindFirstObjectByType<PlayerController>();
         
-        if (playerController.hasAxe)
+        if (playerController.gm.hasAxe)
         {
             SwitchToAxe();
         }

@@ -85215,8 +85215,8 @@ GameObject:
   - component: {fileID: 1665360716}
   - component: {fileID: 1665360718}
   - component: {fileID: 1665360717}
-  - component: {fileID: 1665360719}
   - component: {fileID: 1665360720}
+  - component: {fileID: 1665360721}
   m_Layer: 0
   m_Name: No Collision Door Removed
   m_TagString: Untagged
@@ -85423,18 +85423,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1665360719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665360715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca867c90c26df487eb2cabfc87a20225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1665360720
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85481,6 +85469,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.10038, y: 1.2031298}
   m_EdgeRadius: 0
+--- !u!114 &1665360721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665360715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cded4951dd4324cc8aa4a9b8ee9fcb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1825907749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,

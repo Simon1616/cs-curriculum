@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorsScript : MonoBehaviour
+public class DoorsScript1 : MonoBehaviour
 {
     private PlayerController player;
 
@@ -18,7 +18,7 @@ public class DoorsScript : MonoBehaviour
         
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && player.smack == true && gm.hasAxe == true)
         {

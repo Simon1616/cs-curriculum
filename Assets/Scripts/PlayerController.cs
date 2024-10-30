@@ -24,9 +24,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
 
     public bool smack = false;
-    public bool hasAxe = false;
 
-    private GameManager gm;
+    public GameManager gm;
 
     private void Start()
     {
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Axe"))
         {
-            hasAxe = true;
+            gm.hasAxe = true;
             Destroy(other.gameObject);
             Debug.Log("Axe Acquired");
         }
