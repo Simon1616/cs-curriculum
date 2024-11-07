@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     private Scene current;
 
-    public Scene Current;
-
     public bool hasAxe = false;
 
     public void Awake()
