@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Jumpscript : MonoBehaviour
@@ -21,8 +22,10 @@ public class Jumpscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D leftray = Physics2D.Raycast(new Vector2(transform.position.x - collider2d.bounds.center.x, transform.position.y), Vector2.down, lengthuwu);
-        RaycastHit2D rightray = Physics2D.Raycast(new Vector2(transform.position.x + collider2d.bounds.center.x, transform.position.y), Vector2.down, lengthuwu);
+        RaycastHit2D leftray = Physics2D.Raycast(new Vector2(transform.position.x - collider2d.bounds.extents.x, transform.position.y), Vector2.down, lengthuwu);
+        RaycastHit2D rightray = Physics2D.Raycast(new Vector2(transform.position.x + collider2d.bounds.extents.x, transform.position.y), Vector2.down, lengthuwu);
+        Debug.DrawRay(new Vector2(transform.position.x - collider2d.bounds.extents.x, transform.position.y), Vector2.down * lengthuwu, Color.red);
+        Debug.DrawRay(new Vector2(transform.position.x + collider2d.bounds.extents.x, transform.position.y), Vector2.down * lengthuwu, Color.red);
 
         if ((leftray.collider != null || rightray.collider != null) && Input.GetKeyDown(KeyCode.Space))
         {
