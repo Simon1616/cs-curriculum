@@ -14,6 +14,7 @@ public class CaveprojectileScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        direction = new Vector3(xdirection, ydirection, 0);
         velocity = direction.normalized * speed;
     }
 
@@ -30,8 +31,10 @@ public class CaveprojectileScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("hit something");
         if (!other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("should die");
             Destroy(gameObject);
         }
     }

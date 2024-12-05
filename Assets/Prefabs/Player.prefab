@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animShovel: {fileID: 9100000, guid: 1ccf3beb0c6f246e99cc9a927f1fd12e, type: 2}
   animAxe: {fileID: 9100000, guid: 8cf1007ae09a548dfb24a581133c15db, type: 2}
+  playerController: {fileID: 0}
 --- !u!114 &4796893798707194915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overworld: 1
+  playerX: 0
+  playerY: 0
+  smack: 0
+  gm: {fileID: 0}
 --- !u!114 &2666822559637990100
 MonoBehaviour:
   m_ObjectHideFlags: 0

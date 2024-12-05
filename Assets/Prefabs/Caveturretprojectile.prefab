@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7101103389178533185}
   - component: {fileID: -3514862467880035125}
   - component: {fileID: 4327165216284067482}
-  - component: {fileID: -5303962329267535611}
+  - component: {fileID: 6514986000875491501}
   m_Layer: 0
   m_Name: Caveturretprojectile
   m_TagString: Projectile
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.08
---- !u!114 &-5303962329267535611
+--- !u!114 &6514986000875491501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5790822057519619805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189a18dee01574a4a9e91d5270bdb7f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2658be5cf874a43c3b2db0649dbfb82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  playerController: {fileID: 0}
+  xdirection: -1
+  ydirection: 1

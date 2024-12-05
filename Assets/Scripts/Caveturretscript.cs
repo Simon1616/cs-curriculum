@@ -9,8 +9,8 @@ public class CaveTurretscript : MonoBehaviour
     private float firerate;
     private double cooldown;
 
-    public float xdir;
-    public float ydir;
+    public int xdir;
+    public int ydir;
 
     public GameObject caveprojectileClone;
     
