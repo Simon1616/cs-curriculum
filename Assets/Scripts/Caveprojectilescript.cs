@@ -32,7 +32,11 @@ public class CaveprojectileScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("hit something");
-        if (!other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
+        {
+            
+        }
+        else
         {
             Debug.Log("should die");
             Destroy(gameObject);
