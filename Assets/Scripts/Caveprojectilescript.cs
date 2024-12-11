@@ -1,4 +1,5 @@
 using System;
+using TreeEditor;
 using UnityEngine;
 
 public class CaveprojectileScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class CaveprojectileScript : MonoBehaviour
     private Vector3 velocity;
     public float xdirection;
     public float ydirection;
+    private ShieldScript shield;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,17 +33,24 @@ public class CaveprojectileScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("hit something");
-        if (other.gameObject.CompareTag("Player"))
+        shield = FindFirstObjectByType(ShieldScript);
+        
         {
-            
-        }
-        else
-        {
-            Debug.Log("should die");
-            Destroy(gameObject);
+            Debug.Log("hit");
+            /*
+            if (transform.position.x < other.transform.position.x || transform.position.x > other.transform.position.x)
+            {
+                xdirection *= -1;
+            }
+            if (transform.position.y < other.transform.position.y || transform.position.y > other.transform.position.y)
+            {
+                ydirection *= -1;
+            }
+            */
+            direction = new Vector3(xdirection, ydirection, 0);
+            velocity = direction.normalized * speed;
         }
     }
-}   
+}
 
 
