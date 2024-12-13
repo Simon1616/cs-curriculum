@@ -177,6 +177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xdir: 0
   ydir: 0
-  caveprojectileClone: {fileID: 5790822057519619805, guid: 00fb79a4f99244e2b8fb21f9ec3a8b3d,
+  caveprojectileClone: {fileID: 5790822057519619805, guid: 2322417a4faaf41dca66e4a6e546918b,
     type: 3}
   spawnPos: {x: 0, y: 0, z: 0}

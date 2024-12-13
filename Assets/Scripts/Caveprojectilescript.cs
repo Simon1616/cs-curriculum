@@ -11,7 +11,6 @@ public class CaveprojectileScript : MonoBehaviour
     private Vector3 velocity;
     public float xdirection;
     public float ydirection;
-    private ShieldScript shield;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,11 +32,9 @@ public class CaveprojectileScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        shield = FindFirstObjectByType(ShieldScript);
-        
+
         {
             Debug.Log("hit");
-            /*
             if (transform.position.x < other.transform.position.x || transform.position.x > other.transform.position.x)
             {
                 xdirection *= -1;
@@ -46,7 +43,6 @@ public class CaveprojectileScript : MonoBehaviour
             {
                 ydirection *= -1;
             }
-            */
             direction = new Vector3(xdirection, ydirection, 0);
             velocity = direction.normalized * speed;
         }
