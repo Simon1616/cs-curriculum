@@ -21,7 +21,7 @@ public class LifeJuice : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spikes"))
         {
-            gm.Health -= 10;
+            gm.Health -= 20;
 
             Debug.Log("Health:" + gm.Health);
             gm.healthText.text = "Health: " + gm.Health;
@@ -30,9 +30,9 @@ public class LifeJuice : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Projectile"))
+        if (other.gameObject.CompareTag("Projectile") && )
         {
-            gm.Health -= 20;
+            gm.Health -= 10;
             Destroy(other.gameObject);
             
             Debug.Log("Health:" + gm.Health);
