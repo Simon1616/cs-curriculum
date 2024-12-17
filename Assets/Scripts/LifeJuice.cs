@@ -30,7 +30,7 @@ public class LifeJuice : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Projectile") && )
+        if (other.gameObject.CompareTag("Projectile") && !Input.GetKey(KeyCode.LeftShift))
         {
             gm.Health -= 10;
             Destroy(other.gameObject);

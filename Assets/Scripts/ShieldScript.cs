@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ShieldScript : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class ShieldScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.gameObject.transform.position;
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 99999999, 0);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position = player.transform.position;
+        }
     }
 }

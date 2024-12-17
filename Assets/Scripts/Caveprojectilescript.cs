@@ -1,16 +1,28 @@
+using Unity.Properties;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class CaveprojectileScript : MonoBehaviour
 {
-    private int speed = 8;
+    private int speed = 4;
     private double lifespan = 30;
     private Vector2 velocity;
     public float xdirection;
     public float ydirection;
+    
+    private PlayerController player;
+
+    private Rigidbody2D playerRB;
+
+    private Vector2 add;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = FindFirstObjectByType<PlayerController>();
+        playerRB = player.gameObject.GetComponent<Rigidbody2D>();
         // Initialize direction and velocity
         Vector2 direction = new Vector2(xdirection, ydirection).normalized;
         velocity = direction * speed;
@@ -48,8 +60,20 @@ public class CaveprojectileScript : MonoBehaviour
 
             // Optional: Apply some bounce factor to adjust the speed after bounce (e.g., dampen the movement)
             // velocity *= bounceFactor;
+
+            Debug.Log("the starting velocity is "+velocity);
+            Debug.Log(1);
+            add = new Vector2(player.xvector, 0).normalized;
+            velocity += add * player.xspeed;
+            Debug.Log("the new velocity is " +velocity);
+            Debug.Log("the player's velocity is " + player.xvector);
+            if (velocity.magnitude < speed)
+            {
+                velocity = velocity.normalized;
+                velocity *= speed;
+            }
         }
-        else if(!collider.CompareTag("Enemy"))
+        else if(!collider.CompareTag("Enemy") && !collider.CompareTag("Player") && !collider.CompareTag("Projectile"))
         {
             Destroy(gameObject);
         }

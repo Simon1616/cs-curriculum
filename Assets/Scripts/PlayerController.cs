@@ -11,15 +11,15 @@ public class PlayerController : MonoBehaviour
     public float playerX;
     public float playerY;
 
-    float xspeed;
+    public float xspeed;
     float xdirection;
-    float xvector;
+    public float xvector;
 
     float yspeed;
     float ydirection;
     float yvector;
 
-    private Vector3 movement;
+    public Vector2 movement;
 
     Rigidbody2D rb;
 
