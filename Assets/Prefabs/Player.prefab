@@ -290,6 +290,9 @@ MonoBehaviour:
   overworld: 1
   playerX: 0
   playerY: 0
+  xspeed: 0
+  xvector: 0
+  movement: {x: 0, y: 0}
   smack: 0
   gm: {fileID: 0}
 --- !u!114 &2666822559637990100
